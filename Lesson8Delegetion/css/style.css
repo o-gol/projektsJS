@@ -1,0 +1,34 @@
+button {
+	width: 80px;
+	height: 30px;
+	margin-top: 10px;
+	border: none;
+	border-radius: 8px;
+	background-color: #000;
+	color: #fff;
+	cursor: pointer;
+	outline: none;
+}
+
+/* .btn-block{
+    width: 80px;
+	height: 30px;
+	margin-top: 10px;
+	border: none;
+	border-radius: 8px;
+	background-color: #000;
+	color: #fff;
+	cursor: pointer;
+	outline: none;
+} */
+
+.blue{
+    background-color: blue;
+}
+
+.some{
+    background-color: rgb(104, 104, 153);
+}
+.red{
+    background-color: red;
+}
