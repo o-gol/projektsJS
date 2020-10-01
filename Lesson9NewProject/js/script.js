@@ -251,7 +251,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
                                          Продукт активных и здоровых людей. Это абсолютно новый 
                                          продукт с оптимальной ценой и высоким качеством!`,
                                         11,
-                                        `.menu__field .container`,
+                                        `.menu__field .container`
                                         
      ).innerMenuItem();
     new MenuItem(`img/tabs/elite.jpg`,
@@ -277,7 +277,101 @@ document.addEventListener(`DOMContentLoaded`, () => {
 //------------------------- конец Menu Items
 
 
+
+
 //------------------------- Forms
+const allForms=document.querySelectorAll(`form`);
+//const callMeBackButton=document.querySelectorAll(`[call-button]`);
+//console.log(callMeBackButton);
+//console.log(orderForm);
+//modelCaller;
+//callMe;
+//modal__input
+//order__input
+//[phone-input]
+//[name-input]
+console.log(allForms);
+allForms.forEach(item=>{
+    callMeBack(item);
+});
+
+// });
+const message={
+    loading: `Загрузка`,
+    success: `Спасибо мы с вами свяжемся!`,
+    failure: `Что-то пошло не так!`
+
+};
+
+ function callMeBack(form){
+     
+     form.addEventListener(`submit`,e=>{
+        
+        e.preventDefault();
+        console.log(form);
+        const statusMessage=document.createElement(`div`);
+        statusMessage.classList.add(`status`);
+        statusMessage.textContent=message.loading;
+        form.append(statusMessage);
+        const request= new XMLHttpRequest();
+        request.open(`POST`,`server.php`);    
+        request.setRequestHeader(`Content-type`,`multipart/form-data`);
+        const formData=new FormData(form);
+        console.dir(formData);
+        request.send(formData);
+        request.addEventListener(`load`, ()=>{
+            if(request.status===200){
+                console.log(`Ok`);
+                console.log(request.response);
+                statusMessage.textContent=message.success;
+            }else{
+                 console.log(`Eror`);
+                 statusMessage.textContent=message.failure;
+             }
+        });    
+
+
+     });
+     
+
+ }
+
+//  function callMeBack(form){
+//      form.addEventListener(`submit`,e=>{
+//         e.preventDefault();
+//         const phone=form.querySelector(`[phone-input]`);
+//         const name=form.querySelector(`[name-input]`);
+//             //  console.log(phone);
+//             //  console.log(name);
+//             const info={
+//                 phone: phone.value,
+//                 name: name.value
+            
+//             };
+//             console.log(info.phone);
+//             console.log(info.name);
+        
+//             const infoJSON=JSON.stringify(info);
+//             console.log(infoJSON);
+//             const request= new XMLHttpRequest();
+//             request.open(`POST`,`server.php`);
+//             request.setRequestHeader(`Content-type`,`aplication/json; charset=utf-8`);
+//             request.send(infoJSON);
+//             request.addEventListener(`readystatechange`, ()=>{
+//                 if(request.status===200 && request.readyState===4){
+//                     console.log(`Ok`);
+//                 }else{
+//                     console.log(`Eror`);
+//                 }
+//             }); 
+
+
+//      });
+     
+
+//  }
+ //callMeBack(orderForm);
+ //callMeBack(modelCaller);
 
 
 
