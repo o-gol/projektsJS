@@ -290,7 +290,7 @@ const allForms=document.querySelectorAll(`form`);
 //order__input
 //[phone-input]
 //[name-input]
-console.log(allForms);
+//console.log(allForms);
 allForms.forEach(item=>{
     callMeBack(item);
 });
@@ -339,58 +339,110 @@ const message={
 
 //  }
 
- function callMeBack(form){
-     form.addEventListener(`submit`,e=>{
-        e.preventDefault();
-        const statusMessage=document.createElement(`img`);
-        statusMessage.src=message.loading;
-        // statusMessage.style.cssText=`
-        //     display: block;
-        //     margin: 0 auto;
-        //     width: 30px;
-        //     height: 30px;
-        // `;
-        statusMessage.classList.add(`rot`);
-        console.log(statusMessage);
-        //form.append(statusMessage);
-        form.insertAdjacentElement(`afterend`, statusMessage);
-        const phone=form.querySelector(`[phone-input]`);
-        const name=form.querySelector(`[name-input]`);
-            //  console.log(phone);
-            //  console.log(name);
-            const info={
+//  function callMeBack(form){
+//      form.addEventListener(`submit`,e=>{
+//         e.preventDefault();
+//         const statusMessage=document.createElement(`img`);
+//         statusMessage.src=message.loading;
+//         // statusMessage.style.cssText=`
+//         //     display: block;
+//         //     margin: 0 auto;
+//         //     width: 30px;
+//         //     height: 30px;
+//         // `;
+//         statusMessage.classList.add(`rot`);
+//         console.log(statusMessage);
+//         //form.append(statusMessage);
+//         form.insertAdjacentElement(`afterend`, statusMessage);
+//         const phone=form.querySelector(`[phone-input]`);
+//         const name=form.querySelector(`[name-input]`);
+//             //  console.log(phone);
+//             //  console.log(name);
+//             const info={
+//                 phone: phone.value,
+//                 name: name.value
+            
+//             };
+//             const infoJSON=JSON.stringify(info);
+//             console.log(infoJSON);
+//             const request= new XMLHttpRequest();
+//             request.open(`POST`,`server.php`);
+//             request.setRequestHeader(`Content-type`,`aplication/json`);
+//             request.send(infoJSON);
+//             request.addEventListener(`load`, ()=>{
+//                 if(request.status===200){
+//                     console.log(`Ok`);
+//                     console.log(request.response);
+//                     showThanksModal(message.success);
+//                     statusMessage.remove();
+//                     // statusMessage.textContent=message.success;
+//                     form.reset();
+                    
+//                     // setTimeout(()=>{
+//                     //     statusMessage.remove();
+//                     // }, 2000);
+//                 }else{
+//                     console.log(`Eror`);
+//                     //statusMessage.textContent=message.failure;
+//                     showThanksModal(message.failure);
+//                 }
+//             }); 
+
+
+//      });
+//     }
+
+
+    function callMeBack(form) {
+        form.addEventListener(`submit`, e => {
+            e.preventDefault();
+            const statusMessage = document.createElement(`img`);
+            statusMessage.src = message.loading;
+            statusMessage.classList.add(`rot`);
+            form.insertAdjacentElement(`afterend`, statusMessage);
+            const phone = form.querySelector(`[phone-input]`);
+            const name = form.querySelector(`[name-input]`);
+            const info = {
                 phone: phone.value,
                 name: name.value
-            
+    
             };
-            const infoJSON=JSON.stringify(info);
-            console.log(infoJSON);
-            const request= new XMLHttpRequest();
-            request.open(`POST`,`server.php`);
-            request.setRequestHeader(`Content-type`,`aplication/json`);
-            request.send(infoJSON);
-            request.addEventListener(`load`, ()=>{
-                if(request.status===200){
-                    console.log(`Ok`);
-                    console.log(request.response);
-                    showThanksModal(message.success);
-                    statusMessage.remove();
-                    // statusMessage.textContent=message.success;
+            //const infoJSON = JSON.stringify(info);
+            
+            //`https://jsonplaceholder.typicode.com/posts`
+            //`server.php`
+            fetch(`server.php`,{
+                method:`POST`,
+                headers: {
+                    "Content-Type": "application/json; charset=UTF-8"
+                  //'Content-Type': 'application/json;charset=utf-8'
+                },
+          
+                body:JSON.stringify(info)
+          
+            })
+                  .then(data => data.text())
+                  .then(data => {
+                      console.log(`Ok`);
+                      console.log(data);
+                      showThanksModal(message.success);
+                      statusMessage.remove();
+                  }).catch((e) => {
+                    console.log('Error: ' + e.message);
+                      //console.log(`Eror`);
+                      showThanksModal(message.failure);
+                      statusMessage.remove();
+                  }).finally(()=>{
                     form.reset();
-                    
-                    // setTimeout(()=>{
-                    //     statusMessage.remove();
-                    // }, 2000);
-                }else{
-                    console.log(`Eror`);
-                    //statusMessage.textContent=message.failure;
-                    showThanksModal(message.failure);
-                }
-            }); 
-
-
-     });
+                  });
+        });
     }
+
+
+
+
+
+
 
 
 function showThanksModal(messageAnsver){
