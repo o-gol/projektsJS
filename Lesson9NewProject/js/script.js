@@ -181,17 +181,6 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
     //------------------------- создание Menu Items
 
-    // <div class="menu__item">
-    //                 <img src="img/tabs/vegy.jpg" alt="vegy">
-    //                 <h3 class="menu__item-subtitle">Меню "Фитнес"</h3>
-    //                 <div class="menu__item-descr">Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!</div>
-    //                 <div class="menu__item-divider"></div>
-    //                 <div class="menu__item-price">
-    //                     <div class="menu__item-cost">Цена:</div>
-    //                     <div class="menu__item-total"><span>229</span> грн/день</div>
-    //                 </div>
-    //  </div>
-
     class MenuItem {
         constructor(imgSrc, alt, subtitle, descr, totalPrice, parent, ...classes) {
             this.imgSrc = imgSrc;
@@ -248,37 +237,150 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
     }
 
+    async function menuItemInit(){
+        // getConnect(`http://localhost:3000/menu`)
+        // .then((data)=>{
 
-    new MenuItem(`img/tabs/vegy.jpg`,
-        `vegy`,
-        `Фитнес`,
-        `Меню "Фитнес" - это новый подход к приготовлению блюд: 
-                                        больше свежих овощей и фруктов.
-                                         Продукт активных и здоровых людей. Это абсолютно новый 
-                                         продукт с оптимальной ценой и высоким качеством!`,
-        11,
-        `.menu__field .container`
+        //     data
+        //         .forEach(item=>{
+        //                     new MenuItem(item.imgSrc,
+        //                         item.alt,
+        //                         item.subtitle,
+        //                         item.descr,
+        //                         item.totalPrice,
+        //                         `.menu__field .container`).innerMenuItem();
+                            
 
-    ).innerMenuItem();
-    new MenuItem(`img/tabs/elite.jpg`,
-        `elite`,
-        `Премиум`,
-        `В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!`,
-        15,
-        `.menu__field .container`,
-        `menu__item`
-    ).innerMenuItem();
-    new MenuItem(`img/tabs/post.jpg`,
-        `post`,
-        `Постное`,
-        `Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.`,
-        10,
-        `.menu__field .container`,
-        `menu__item`
-    ).innerMenuItem();
+        //                 });
+        // });
+        axios.get(`http://localhost:3000/menu`)
+        .then((data)=>{
 
-    //fitnesItemMenu.innerMenuItem();
+            data.data
+                .forEach(item=>{
+                            new MenuItem(item.imgSrc,
+                                item.alt,
+                                item.subtitle,
+                                item.descr,
+                                item.totalPrice,
+                                `.menu__field .container`).innerMenuItem();
+                            
 
+                        });
+        });
+    }
+
+    menuItemInit();
+
+
+
+
+
+
+
+
+
+
+
+const menuItemsComments={
+    // // <div class="menu__item">
+    // //                 <img src="img/tabs/vegy.jpg" alt="vegy">
+    // //                 <h3 class="menu__item-subtitle">Меню "Фитнес"</h3>
+    // //                 <div class="menu__item-descr">Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!</div>
+    // //                 <div class="menu__item-divider"></div>
+    // //                 <div class="menu__item-price">
+    // //                     <div class="menu__item-cost">Цена:</div>
+    // //                     <div class="menu__item-total"><span>229</span> грн/день</div>
+    // //                 </div>
+    // //  </div>
+
+    // class MenuItem {
+    //     constructor(imgSrc, alt, subtitle, descr, totalPrice, parent, ...classes) {
+    //         this.imgSrc = imgSrc;
+    //         this.alt = alt;
+    //         this.subtitle = subtitle;
+    //         this.descr = descr;
+    //         this.totalPrice = totalPrice;
+    //         this.classes = classes;
+    //         this.transfer = 27;
+    //         this.chengeToUAH();
+    //         this.contaner = document.querySelector(parent);
+
+    //     }
+
+    //     chengeToUAH() {
+    //         this.totalPrice = this.totalPrice * this.transfer;
+
+    //     }
+
+    //     innerMenuItem() {
+    //         const menuItem = `
+    //                 <img src="${this.imgSrc}" alt="${this.alt}">
+    //                 <h3 class="menu__item-subtitle">Меню "${this.subtitle}"</h3>
+    //                 <div class="menu__item-descr">${this.descr}</div>
+    //                 <div class="menu__item-divider"></div>
+    //                 <div class="menu__item-price">
+    //                     <div class="menu__item-cost">Цена:</div>
+    //                     <div class="menu__item-total"><span>${this.totalPrice}</span> грн/день</div>
+    //                 </div>
+    //         `;
+
+    //         let divMenuItem = document.createElement(`div`);
+
+
+    //         if (this.classes.length === 0) {
+    //             this.defaultClass = `menu__item`;
+    //             divMenuItem.classList.add(this.defaultClass);
+    //         } else {
+    //             this.classes.forEach(className => divMenuItem.classList.add(className));
+    //         }
+
+
+    //         divMenuItem.innerHTML = menuItem;
+
+    //         this.contaner.append(divMenuItem);
+    //         //contaner.innerHTML=divMenuItem;
+
+
+
+
+    //     }
+
+
+
+    // }
+
+
+    // new MenuItem(`img/tabs/vegy.jpg`,
+    //     `vegy`,
+    //     `Фитнес`,
+    //     `Меню "Фитнес" - это новый подход к приготовлению блюд: 
+    //                                     больше свежих овощей и фруктов.
+    //                                      Продукт активных и здоровых людей. Это абсолютно новый 
+    //                                      продукт с оптимальной ценой и высоким качеством!`,
+    //     11,
+    //     `.menu__field .container`
+
+    // ).innerMenuItem();
+    // new MenuItem(`img/tabs/elite.jpg`,
+    //     `elite`,
+    //     `Премиум`,
+    //     `В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!`,
+    //     15,
+    //     `.menu__field .container`,
+    //     `menu__item`
+    // ).innerMenuItem();
+    // new MenuItem(`img/tabs/post.jpg`,
+    //     `post`,
+    //     `Постное`,
+    //     `Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.`,
+    //     10,
+    //     `.menu__field .container`,
+    //     `menu__item`
+    // ).innerMenuItem();
+
+    // //fitnesItemMenu.innerMenuItem();
+};
 
     //------------------------- конец Menu Items
 
@@ -431,11 +533,24 @@ document.addEventListener(`DOMContentLoaded`, () => {
             headers: headers1,
             body: body1
 
-        }).json();
+        })
+        .then((response) => response.json())
+        ;
     }
     async function  getConnect  (url) {
-        return await fetch(url).then((response) => response.json());
+
+        const res= await fetch(url);
+        if(!res.ok){
+            throw new Error(`Could not fetch ${url}, status ${res.status} `);
+        }
+        return res.json();
     }
+
+    
+
+
+
+
 
     function callMeBack(form) {
         form.addEventListener(`submit`, e => {
@@ -451,20 +566,18 @@ document.addEventListener(`DOMContentLoaded`, () => {
                 name: name.value
 
             };
-            //const infoJSON = JSON.stringify(info);
 
-            //`https://jsonplaceholder.typicode.com/posts`
-            //`server.php`
-            // fetch(`server.php`, {
-            //         method: `POST`,
-            //         headers: {
-            //             "Content-Type": "application/json; charset=UTF-8"
-            //             //'Content-Type': 'application/json;charset=utf-8'
-            //         },
 
-            //         body: JSON.stringify(info)
+            const infoFormData=new FormData(form);
+            console.log(Object.fromEntries( infoFormData.entries()));
+            const jsonInfoFormData=JSON
+            .stringify(Object.fromEntries( infoFormData.entries()));
 
-            //     })
+            
+            
+
+
+
             postConnect(`http://localhost:3000/requests`, {"Content-Type": "application/json; charset=UTF-8"}, JSON.stringify(info))
                 //.then(data => data.text())
                 .then(data => {
@@ -522,13 +635,6 @@ document.addEventListener(`DOMContentLoaded`, () => {
     //------------------------- End Forms
 
 
-    fetch(`http://localhost:3000/menu`)
-        .then((response) => response.json())
-        //.then((data)=>JSON.parse(data))
-        .then((data) => console.log(data));
-    getConnect(`http://localhost:3000/menu`)
-        //.then((data)=>JSON.parse(data))
-        .then((data) => console.log(data));
 
 
 
@@ -538,18 +644,35 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
 
 
+    //------------------- Garbage
 
 
 
 
+    // fetch(`http://localhost:3000/menu`)
+    //     .then((response) => response.json())
+    //     //.then((data)=>JSON.parse(data))
+    //     .then((data) => console.log(data));
+    // getConnect(`http://localhost:3000/menu`)
+    //     //.then((data)=>JSON.parse(data))
+    //     .then((data) => console.log(data));
 
 
+    // getConnect(`http://localhost:3000/menu`)
+    //     .then((data)=>{
 
+    //         data
+    //             .forEach(item=>{
+    //                         new MenuItem(item.imgSrc,
+    //                             item.alt,
+    //                             item.subtitle,
+    //                             item.descr,
+    //                             item.totalPrice,
+    //                             `.menu__field .container`).innerMenuItem();
+    //                         console.log(`do item`);
 
-
-
-
-
+    //                     });
+    //     });
 
     //alert(diffDays);
 
