@@ -642,14 +642,17 @@ const menuItemsComments={
     const slider=document.querySelector(`.offer__slider`);
     //console.log(slider);
     const sliderWrapper=slider.querySelectorAll(`.offer__slide`);
-    const sliderNext=slider.querySelectorAll(`.offer__slider-next`);
-    const sliderPrev=slider.querySelectorAll(`.offer__slider-prev`);
+    const sliderNext=slider.querySelector(`.offer__slider-next`);
+    console.log(sliderNext);
+    const sliderPrev=slider.querySelector(`.offer__slider-prev`);
     const current=slider.querySelector(`#current`);
     const total=slider.querySelector(`#total`);
-    const numOfSlider=0;
+    let numOfSlider=0;
+    let totalNums=0;
     function showHideElementsByNum(element,num){
         element.forEach((item,i, arr)=>{
-            total.innerHTML=returnZero(arr.length);
+            totalNums=arr.length;
+            total.innerHTML=returnZero(totalNums);
             if(i==num){
                 item.classList.add(`show`);
                 item.classList.remove(`hide`);
@@ -672,8 +675,15 @@ const menuItemsComments={
     
 
     sliderNext.addEventListener(`click`, ()=>{
+        if(numOfSlider<totalNums-1){
+            numOfSlider++;
+          showHideElementsByNum(sliderWrapper, numOfSlider);  
+        }else{
+            numOfSlider=0;
+            showHideElementsByNum(sliderWrapper, numOfSlider); 
+        }
 
-        showHideElementsByNum(sliderWrapper, numOfSlider);
+        
 
     });
 
