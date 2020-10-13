@@ -168,7 +168,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
         }
     });
     //--------------------------TimeOut and ScrolEnd ModalWindow
-    const idTimer = setTimeout(showModal, 5000);
+    //const idTimer = setTimeout(showModal, 5000);
     //window.addEventListener(`scroll`,showModalbyScrol);
     //------------------------- End ModalWindow
 
@@ -634,6 +634,51 @@ const menuItemsComments={
 
     //------------------------- End Forms
 
+
+
+
+    //------------------------- Slider
+
+    const slider=document.querySelector(`.offer__slider`);
+    //console.log(slider);
+    const sliderWrapper=slider.querySelectorAll(`.offer__slide`);
+    const sliderNext=slider.querySelectorAll(`.offer__slider-next`);
+    const sliderPrev=slider.querySelectorAll(`.offer__slider-prev`);
+    const current=slider.querySelector(`#current`);
+    const total=slider.querySelector(`#total`);
+    const numOfSlider=0;
+    function showHideElementsByNum(element,num){
+        element.forEach((item,i, arr)=>{
+            total.innerHTML=returnZero(arr.length);
+            if(i==num){
+                item.classList.add(`show`);
+                item.classList.remove(`hide`);
+                current.innerHTML=returnZero(num+1);
+                
+                
+            }else{
+                item.classList.add(`hide`);
+                item.classList.remove(`show`);
+
+            }
+        });
+
+    }
+
+    showHideElementsByNum(sliderWrapper, numOfSlider);
+    
+
+
+    
+
+    sliderNext.addEventListener(`click`, ()=>{
+
+        showHideElementsByNum(sliderWrapper, numOfSlider);
+
+    });
+
+
+    //------------------------- End Slider
 
 
 
