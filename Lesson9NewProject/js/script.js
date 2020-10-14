@@ -1,5 +1,6 @@
 `use strict`;
-// cd Lesson9NewProject 
+// cd projectsJS/Lesson9NewProject 
+// cd C:\MAMP\htdocs\projektsJS\Lesson9NewProject
 // comands: npx json-server db.json  --запуск json сервера
 //http://localhost:3000/menu  --база данных json сервера(get)
 //http://localhost:3000/requests  --requests json сервера(post)
@@ -14,7 +15,8 @@ document.addEventListener(`DOMContentLoaded`, () => {
         timerHours = document.querySelector(`#hours`),
         timerMin = document.querySelector(`#minutes`),
         timerSec = document.querySelector(`#seconds`);
-
+        
+        
 
     let flag = 0;
     let timerExemple;
@@ -641,51 +643,136 @@ const menuItemsComments={
 
     const slider=document.querySelector(`.offer__slider`);
     //console.log(slider);
-    const sliderWrapper=slider.querySelectorAll(`.offer__slide`);
+    const sliderWrappers=slider.querySelectorAll(`.offer__slide`);
     const sliderNext=slider.querySelector(`.offer__slider-next`);
-    console.log(sliderNext);
     const sliderPrev=slider.querySelector(`.offer__slider-prev`);
     const current=slider.querySelector(`#current`);
     const total=slider.querySelector(`#total`);
-    let numOfSlider=0;
-    let totalNums=0;
-    function showHideElementsByNum(element,num){
-        element.forEach((item,i, arr)=>{
-            totalNums=arr.length;
-            total.innerHTML=returnZero(totalNums);
-            if(i==num){
-                item.classList.add(`show`);
-                item.classList.remove(`hide`);
-                current.innerHTML=returnZero(num+1);
-                
-                
-            }else{
-                item.classList.add(`hide`);
-                item.classList.remove(`show`);
+    const sliderField=slider.querySelector(`.offer__slider-inner`);
+    const sliderWrapper=document.querySelector(`.offer__slider-wrapper`);
+        //console.log(sliderWrapper);
+    sliderWrapper.style.overflow=`hidden`;
+    const width=window.getComputedStyle(sliderWrapper).width;
+    let offset=0;
+    let numOfSlider=10;
+    offset=+width.slice(0,width.length-2)*(numOfSlider-1);
+    sliderField.style.transform=`translateX(-${offset}px)`;
+    current.innerHTML=returnZero(numOfSlider);
+    sliderField.style.width=100 * sliderWrappers.length+`%`
+    console.log(100 * sliderWrappers.length+`%`);
+    sliderField.style.display=`flex`;
+    sliderField.style.transition=`0.5s all`;
+    
+    let totalNums=sliderWrappers.length;
+    total.innerHTML=returnZero(totalNums);
 
-            }
-        });
+    sliderWrappers.forEach((item)=>{
 
+        item.style.width=width;
+
+    });
+    
+    sliderNext.addEventListener(`click`, ()=>{
+
+        if(offset==+width.slice(0,width.length-2)*(sliderWrappers.length-1))
+        {
+            offset=0;
+            numOfSlider=1;
+
+        }else{
+            offset+= +width.slice(0,width.length-2);
+            numOfSlider++;
+        }
+        sliderField.style.transform=`translateX(-${offset}px)`;
+        current.innerHTML=returnZero(numOfSlider);
+
+    });
+    sliderPrev.addEventListener(`click`, ()=>{
+
+        if(offset<=0)//+width.slice(0,width.length-2)*(sliderWrappers.length-1))
+        {
+            offset= +width.slice(0,width.length-2)*(sliderWrappers.length-1);
+            numOfSlider=totalNums;
+        }else{
+            offset-= +width.slice(0,width.length-2);
+            numOfSlider--;
+        }
+        sliderField.style.transform=`translateX(-${offset}px)`;
+        current.innerHTML=returnZero(numOfSlider);
+
+    });
+
+
+
+
+    const circleDiv= document.createElement(`div`);
+    circleDiv.classList.add(`offer__slider-circleContainer`);
+    slider.append(circleDiv);
+
+
+
+    for (let i = 0; i < totalNums; i++) {
+
+        const circleP = document.createElement(`p`);
+        circleP.classList.add(`dot`);
+        circleDiv.insertBefore(circleP);
+        
     }
 
-    showHideElementsByNum(sliderWrapper, numOfSlider);
+
+
+
+
+    // let totalNums=sliderWrappers.length;
+    // total.innerHTML=returnZero(totalNums);
+    // function showHideElementsByNum(element,num){
+    //     element.forEach((item,i)=>{
+    //         if(i==num){
+    //             item.classList.add(`show`);
+    //             item.classList.remove(`hide`);
+    //             current.innerHTML=returnZero(num+1);
+                
+                
+    //         }else{
+    //             item.classList.add(`hide`);
+    //             item.classList.remove(`show`);
+
+    //         }
+    //     });
+
+    // }
+
+    // showHideElementsByNum(sliderWrappers, numOfSlider);
     
 
 
     
 
-    sliderNext.addEventListener(`click`, ()=>{
-        if(numOfSlider<totalNums-1){
-            numOfSlider++;
-          showHideElementsByNum(sliderWrapper, numOfSlider);  
-        }else{
-            numOfSlider=0;
-            showHideElementsByNum(sliderWrapper, numOfSlider); 
-        }
+    // sliderNext.addEventListener(`click`, ()=>{
+    //     if(numOfSlider<totalNums-1){
+    //         numOfSlider++;
+    //       showHideElementsByNum(sliderWrappers, numOfSlider);  
+    //     }else{
+    //         numOfSlider=0;
+    //         showHideElementsByNum(sliderWrappers, numOfSlider); 
+    //     }
 
         
 
-    });
+    // });
+    // sliderPrev.addEventListener(`click`, ()=>{
+    //     if(numOfSlider<=0){
+    //         numOfSlider=totalNums-1;
+    //         showHideElementsByNum(sliderWrappers, numOfSlider);
+            
+    //     }else{
+    //         numOfSlider--;
+    //       showHideElementsByNum(sliderWrappers, numOfSlider);  
+    //     }
+
+        
+
+    // });
 
 
     //------------------------- End Slider
