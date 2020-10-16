@@ -770,7 +770,7 @@ img.rot {
     margin-right: 3px;
     margin-left: 3px;
     cursor: pointer;
-    background-color: #fff;
+    background-color: rgb(187, 156, 156);
     background-clip: padding-box;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
@@ -778,4 +778,20 @@ img.rot {
     transition: opacity .6s ease;
 }
 
+ .inc {
+    box-sizing: content-box;
+    flex: 0 1 auto;
+    width: 30px;
+    height: 6px;
+    margin-right: 3px;
+    margin-left: 3px;
+    cursor: pointer;
+    background-color: rgb(8, 0, 0);
+    background-clip: padding-box;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    opacity: .5;
+    transition: opacity .6s ease;
+
+}
 

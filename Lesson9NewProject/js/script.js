@@ -15,8 +15,8 @@ document.addEventListener(`DOMContentLoaded`, () => {
         timerHours = document.querySelector(`#hours`),
         timerMin = document.querySelector(`#minutes`),
         timerSec = document.querySelector(`#seconds`);
-        
-        
+
+
 
     let flag = 0;
     let timerExemple;
@@ -239,7 +239,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
     }
 
-    async function menuItemInit(){
+    async function menuItemInit() {
         // getConnect(`http://localhost:3000/menu`)
         // .then((data)=>{
 
@@ -251,25 +251,25 @@ document.addEventListener(`DOMContentLoaded`, () => {
         //                         item.descr,
         //                         item.totalPrice,
         //                         `.menu__field .container`).innerMenuItem();
-                            
+
 
         //                 });
         // });
         axios.get(`http://localhost:3000/menu`)
-        .then((data)=>{
+            .then((data) => {
 
-            data.data
-                .forEach(item=>{
-                            new MenuItem(item.imgSrc,
-                                item.alt,
-                                item.subtitle,
-                                item.descr,
-                                item.totalPrice,
-                                `.menu__field .container`).innerMenuItem();
-                            
+                data.data
+                    .forEach(item => {
+                        new MenuItem(item.imgSrc,
+                            item.alt,
+                            item.subtitle,
+                            item.descr,
+                            item.totalPrice,
+                            `.menu__field .container`).innerMenuItem();
 
-                        });
-        });
+
+                    });
+            });
     }
 
     menuItemInit();
@@ -284,105 +284,105 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
 
 
-const menuItemsComments={
-    // // <div class="menu__item">
-    // //                 <img src="img/tabs/vegy.jpg" alt="vegy">
-    // //                 <h3 class="menu__item-subtitle">Меню "Фитнес"</h3>
-    // //                 <div class="menu__item-descr">Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!</div>
-    // //                 <div class="menu__item-divider"></div>
-    // //                 <div class="menu__item-price">
-    // //                     <div class="menu__item-cost">Цена:</div>
-    // //                     <div class="menu__item-total"><span>229</span> грн/день</div>
-    // //                 </div>
-    // //  </div>
+    const menuItemsComments = {
+        // // <div class="menu__item">
+        // //                 <img src="img/tabs/vegy.jpg" alt="vegy">
+        // //                 <h3 class="menu__item-subtitle">Меню "Фитнес"</h3>
+        // //                 <div class="menu__item-descr">Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!</div>
+        // //                 <div class="menu__item-divider"></div>
+        // //                 <div class="menu__item-price">
+        // //                     <div class="menu__item-cost">Цена:</div>
+        // //                     <div class="menu__item-total"><span>229</span> грн/день</div>
+        // //                 </div>
+        // //  </div>
 
-    // class MenuItem {
-    //     constructor(imgSrc, alt, subtitle, descr, totalPrice, parent, ...classes) {
-    //         this.imgSrc = imgSrc;
-    //         this.alt = alt;
-    //         this.subtitle = subtitle;
-    //         this.descr = descr;
-    //         this.totalPrice = totalPrice;
-    //         this.classes = classes;
-    //         this.transfer = 27;
-    //         this.chengeToUAH();
-    //         this.contaner = document.querySelector(parent);
+        // class MenuItem {
+        //     constructor(imgSrc, alt, subtitle, descr, totalPrice, parent, ...classes) {
+        //         this.imgSrc = imgSrc;
+        //         this.alt = alt;
+        //         this.subtitle = subtitle;
+        //         this.descr = descr;
+        //         this.totalPrice = totalPrice;
+        //         this.classes = classes;
+        //         this.transfer = 27;
+        //         this.chengeToUAH();
+        //         this.contaner = document.querySelector(parent);
 
-    //     }
+        //     }
 
-    //     chengeToUAH() {
-    //         this.totalPrice = this.totalPrice * this.transfer;
+        //     chengeToUAH() {
+        //         this.totalPrice = this.totalPrice * this.transfer;
 
-    //     }
+        //     }
 
-    //     innerMenuItem() {
-    //         const menuItem = `
-    //                 <img src="${this.imgSrc}" alt="${this.alt}">
-    //                 <h3 class="menu__item-subtitle">Меню "${this.subtitle}"</h3>
-    //                 <div class="menu__item-descr">${this.descr}</div>
-    //                 <div class="menu__item-divider"></div>
-    //                 <div class="menu__item-price">
-    //                     <div class="menu__item-cost">Цена:</div>
-    //                     <div class="menu__item-total"><span>${this.totalPrice}</span> грн/день</div>
-    //                 </div>
-    //         `;
+        //     innerMenuItem() {
+        //         const menuItem = `
+        //                 <img src="${this.imgSrc}" alt="${this.alt}">
+        //                 <h3 class="menu__item-subtitle">Меню "${this.subtitle}"</h3>
+        //                 <div class="menu__item-descr">${this.descr}</div>
+        //                 <div class="menu__item-divider"></div>
+        //                 <div class="menu__item-price">
+        //                     <div class="menu__item-cost">Цена:</div>
+        //                     <div class="menu__item-total"><span>${this.totalPrice}</span> грн/день</div>
+        //                 </div>
+        //         `;
 
-    //         let divMenuItem = document.createElement(`div`);
-
-
-    //         if (this.classes.length === 0) {
-    //             this.defaultClass = `menu__item`;
-    //             divMenuItem.classList.add(this.defaultClass);
-    //         } else {
-    //             this.classes.forEach(className => divMenuItem.classList.add(className));
-    //         }
+        //         let divMenuItem = document.createElement(`div`);
 
 
-    //         divMenuItem.innerHTML = menuItem;
+        //         if (this.classes.length === 0) {
+        //             this.defaultClass = `menu__item`;
+        //             divMenuItem.classList.add(this.defaultClass);
+        //         } else {
+        //             this.classes.forEach(className => divMenuItem.classList.add(className));
+        //         }
 
-    //         this.contaner.append(divMenuItem);
-    //         //contaner.innerHTML=divMenuItem;
 
+        //         divMenuItem.innerHTML = menuItem;
 
-
-
-    //     }
+        //         this.contaner.append(divMenuItem);
+        //         //contaner.innerHTML=divMenuItem;
 
 
 
-    // }
+
+        //     }
 
 
-    // new MenuItem(`img/tabs/vegy.jpg`,
-    //     `vegy`,
-    //     `Фитнес`,
-    //     `Меню "Фитнес" - это новый подход к приготовлению блюд: 
-    //                                     больше свежих овощей и фруктов.
-    //                                      Продукт активных и здоровых людей. Это абсолютно новый 
-    //                                      продукт с оптимальной ценой и высоким качеством!`,
-    //     11,
-    //     `.menu__field .container`
 
-    // ).innerMenuItem();
-    // new MenuItem(`img/tabs/elite.jpg`,
-    //     `elite`,
-    //     `Премиум`,
-    //     `В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!`,
-    //     15,
-    //     `.menu__field .container`,
-    //     `menu__item`
-    // ).innerMenuItem();
-    // new MenuItem(`img/tabs/post.jpg`,
-    //     `post`,
-    //     `Постное`,
-    //     `Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.`,
-    //     10,
-    //     `.menu__field .container`,
-    //     `menu__item`
-    // ).innerMenuItem();
+        // }
 
-    // //fitnesItemMenu.innerMenuItem();
-};
+
+        // new MenuItem(`img/tabs/vegy.jpg`,
+        //     `vegy`,
+        //     `Фитнес`,
+        //     `Меню "Фитнес" - это новый подход к приготовлению блюд: 
+        //                                     больше свежих овощей и фруктов.
+        //                                      Продукт активных и здоровых людей. Это абсолютно новый 
+        //                                      продукт с оптимальной ценой и высоким качеством!`,
+        //     11,
+        //     `.menu__field .container`
+
+        // ).innerMenuItem();
+        // new MenuItem(`img/tabs/elite.jpg`,
+        //     `elite`,
+        //     `Премиум`,
+        //     `В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!`,
+        //     15,
+        //     `.menu__field .container`,
+        //     `menu__item`
+        // ).innerMenuItem();
+        // new MenuItem(`img/tabs/post.jpg`,
+        //     `post`,
+        //     `Постное`,
+        //     `Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.`,
+        //     10,
+        //     `.menu__field .container`,
+        //     `menu__item`
+        // ).innerMenuItem();
+
+        // //fitnesItemMenu.innerMenuItem();
+    };
 
     //------------------------- конец Menu Items
 
@@ -507,7 +507,7 @@ const menuItemsComments={
 
 
     // const   postConnect =  (url, headers1, body1)=> {
-        
+
     //     const res= fetch(url, {
     //         method: `POST`,
     //         headers: headers1,
@@ -518,7 +518,7 @@ const menuItemsComments={
     //     return  res.json();
     // };
     // async function   postConnect  (url, headers1, body1) {
-        
+
     //     const res= await fetch(url, {
     //         method: `POST`,
     //         headers: headers1,
@@ -529,26 +529,25 @@ const menuItemsComments={
     //     return await res.json();
     // }
 
-    async function  postConnect  (url, headers1, body1) {
+    async function postConnect(url, headers1, body1) {
         return await fetch(url, {
-            method: `POST`,
-            headers: headers1,
-            body: body1
+                method: `POST`,
+                headers: headers1,
+                body: body1
 
-        })
-        .then((response) => response.json())
-        ;
+            })
+            .then((response) => response.json());
     }
-    async function  getConnect  (url) {
+    async function getConnect(url) {
 
-        const res= await fetch(url);
-        if(!res.ok){
+        const res = await fetch(url);
+        if (!res.ok) {
             throw new Error(`Could not fetch ${url}, status ${res.status} `);
         }
         return res.json();
     }
 
-    
+
 
 
 
@@ -570,17 +569,19 @@ const menuItemsComments={
             };
 
 
-            const infoFormData=new FormData(form);
-            console.log(Object.fromEntries( infoFormData.entries()));
-            const jsonInfoFormData=JSON
-            .stringify(Object.fromEntries( infoFormData.entries()));
-
-            
-            
+            const infoFormData = new FormData(form);
+            console.log(Object.fromEntries(infoFormData.entries()));
+            const jsonInfoFormData = JSON
+                .stringify(Object.fromEntries(infoFormData.entries()));
 
 
 
-            postConnect(`http://localhost:3000/requests`, {"Content-Type": "application/json; charset=UTF-8"}, JSON.stringify(info))
+
+
+
+            postConnect(`http://localhost:3000/requests`, {
+                    "Content-Type": "application/json; charset=UTF-8"
+                }, JSON.stringify(info))
                 //.then(data => data.text())
                 .then(data => {
                     console.log(`Ok`);
@@ -641,83 +642,173 @@ const menuItemsComments={
 
     //------------------------- Slider
 
-    const slider=document.querySelector(`.offer__slider`);
+    const slider = document.querySelector(`.offer__slider`);
+    slider.style.position=`relative`;
     //console.log(slider);
-    const sliderWrappers=slider.querySelectorAll(`.offer__slide`);
-    const sliderNext=slider.querySelector(`.offer__slider-next`);
-    const sliderPrev=slider.querySelector(`.offer__slider-prev`);
-    const current=slider.querySelector(`#current`);
-    const total=slider.querySelector(`#total`);
-    const sliderField=slider.querySelector(`.offer__slider-inner`);
-    const sliderWrapper=document.querySelector(`.offer__slider-wrapper`);
-        //console.log(sliderWrapper);
-    sliderWrapper.style.overflow=`hidden`;
-    const width=window.getComputedStyle(sliderWrapper).width;
-    let offset=0;
-    let numOfSlider=10;
-    offset=+width.slice(0,width.length-2)*(numOfSlider-1);
-    sliderField.style.transform=`translateX(-${offset}px)`;
-    current.innerHTML=returnZero(numOfSlider);
-    sliderField.style.width=100 * sliderWrappers.length+`%`
-    console.log(100 * sliderWrappers.length+`%`);
-    sliderField.style.display=`flex`;
-    sliderField.style.transition=`0.5s all`;
-    
-    let totalNums=sliderWrappers.length;
-    total.innerHTML=returnZero(totalNums);
-
-    sliderWrappers.forEach((item)=>{
-
-        item.style.width=width;
-
-    });
-    
-    sliderNext.addEventListener(`click`, ()=>{
-
-        if(offset==+width.slice(0,width.length-2)*(sliderWrappers.length-1))
-        {
-            offset=0;
-            numOfSlider=1;
-
-        }else{
-            offset+= +width.slice(0,width.length-2);
-            numOfSlider++;
-        }
-        sliderField.style.transform=`translateX(-${offset}px)`;
-        current.innerHTML=returnZero(numOfSlider);
-
-    });
-    sliderPrev.addEventListener(`click`, ()=>{
-
-        if(offset<=0)//+width.slice(0,width.length-2)*(sliderWrappers.length-1))
-        {
-            offset= +width.slice(0,width.length-2)*(sliderWrappers.length-1);
-            numOfSlider=totalNums;
-        }else{
-            offset-= +width.slice(0,width.length-2);
-            numOfSlider--;
-        }
-        sliderField.style.transform=`translateX(-${offset}px)`;
-        current.innerHTML=returnZero(numOfSlider);
-
-    });
-
-
-
-
-    const circleDiv= document.createElement(`div`);
-    circleDiv.classList.add(`offer__slider-circleContainer`);
-    slider.append(circleDiv);
-
-
+    const sliderWrappers = slider.querySelectorAll(`.offer__slide`);
+    const sliderNext = slider.querySelector(`.offer__slider-next`);
+    const sliderPrev = slider.querySelector(`.offer__slider-prev`);
+    const current = slider.querySelector(`#current`);
+    const total = slider.querySelector(`#total`);
+    const sliderField = slider.querySelector(`.offer__slider-inner`);
+    const sliderWrapper = document.querySelector(`.offer__slider-wrapper`);
+    const carouselIndicators = document.createElement(`ol`);
+    carouselIndicators.classList.add(`carousel-indicators`);
+    slider.append(carouselIndicators);
+    let totalNums = sliderWrappers.length;
+    total.innerHTML = returnZero(totalNums);
 
     for (let i = 0; i < totalNums; i++) {
-
-        const circleP = document.createElement(`p`);
-        circleP.classList.add(`dot`);
-        circleDiv.insertBefore(circleP);
-        
+        const dot = document.createElement(`li`);
+        //dot.id = i;
+        dot.setAttribute(`data-slide-to`,i+1);
+        dot.classList.add(`dot`);
+        carouselIndicators.append(dot);
     }
+    const dots = document.querySelectorAll(`.dot`);
+
+    sliderWrapper.style.overflow = `hidden`;
+    const width = window.getComputedStyle(sliderWrapper).width;
+    let offset = 0;
+    let numOfSlider = 0;
+
+    function initSlider(num) {
+        numOfSlider = num;
+        offset = +width.slice(0, width.length - 2) * (numOfSlider - 1);
+        sliderField.style.transform = `translateX(-${offset}px)`;
+        current.innerHTML = returnZero(numOfSlider);
+        dots.forEach((item, i) => {
+            if (i == num - 1) {
+                item.classList.add(`inc`);
+            } else {
+                item.classList.remove(`inc`)
+            }
+
+        });
+
+
+    }
+
+    initSlider(2);
+
+    sliderField.style.width = 100 * sliderWrappers.length + `%`
+    //console.log(100 * sliderWrappers.length+`%`);
+    sliderField.style.display = `flex`;
+    sliderField.style.transition = `0.5s all`;
+
+
+    sliderWrappers.forEach((item) => {
+
+        item.style.width = width;
+
+    });
+
+    sliderNext.addEventListener(`click`, () => {
+
+        if (offset == +width.slice(0, width.length - 2) * (sliderWrappers.length - 1)) {
+            offset = 0;
+            numOfSlider = 1;
+
+        } else {
+            offset += +width.slice(0, width.length - 2);
+            numOfSlider++;
+        }
+        // sliderField.style.transform=`translateX(-${offset}px)`;
+        // current.innerHTML=returnZero(numOfSlider);
+        initSlider(numOfSlider);
+
+    });
+    sliderPrev.addEventListener(`click`, () => {
+
+        if (offset <= 0) //+width.slice(0,width.length-2)*(sliderWrappers.length-1))
+        {
+            offset = +width.slice(0, width.length - 2) * (sliderWrappers.length - 1);
+            numOfSlider = totalNums;
+        } else {
+            offset -= +width.slice(0, width.length - 2);
+            numOfSlider--;
+        }
+        // sliderField.style.transform=`translateX(-${offset}px)`;
+        // current.innerHTML=returnZero(numOfSlider);
+        initSlider(numOfSlider);
+
+    });
+
+    carouselIndicators.addEventListener(`click`, (e) => {
+        //console.dir(e.target);
+        //if(e.target.classList.contains(`dot`))
+        if (e.target && e.target.classList.contains(`dot`)) {
+            //console.log(e.target.id);
+            //initSlider(+e.target.id + 1);
+            initSlider(e.target.getAttribute(`data-slide-to`));
+        }
+
+    });
+
+    function rightLeftKeyboardSlider() {
+        let evt = false;
+        document.addEventListener(`keydown`, (evk) => {
+
+            if (evt && evk.code == `ArrowRight`) {
+                evk.preventDefault();
+                if (offset == +width.slice(0, width.length - 2) * (sliderWrappers.length - 1)) {
+                    offset = 0;
+                    numOfSlider = 1;
+
+                } else {
+                    offset += +width.slice(0, width.length - 2);
+                    numOfSlider++;
+                }
+                initSlider(numOfSlider);
+            }
+
+
+            if (evt && evk.code == `ArrowLeft`) {
+                if (offset <= 0) //+width.slice(0,width.length-2)*(sliderWrappers.length-1))
+                {
+                    offset = +width.slice(0, width.length - 2) * (sliderWrappers.length - 1);
+                    numOfSlider = totalNums;
+                } else {
+                    offset -= +width.slice(0, width.length - 2);
+                    numOfSlider--;
+                }
+                // sliderField.style.transform=`translateX(-${offset}px)`;
+                // current.innerHTML=returnZero(numOfSlider);
+                initSlider(numOfSlider);
+            }
+        });
+
+
+        function test() {
+            evt = true;
+            sliderWrapper.removeEventListener(`mouseover`, test);
+        }
+
+        sliderWrapper.addEventListener(`mouseover`, test);
+
+        sliderWrapper.addEventListener(`mouseout`, () => {
+            evt = false;
+            sliderWrapper.addEventListener(`mouseover`, test);
+        });
+
+    }
+
+
+    rightLeftKeyboardSlider();
+
+
+
+ //-------------------------End Slider
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -731,8 +822,8 @@ const menuItemsComments={
     //             item.classList.add(`show`);
     //             item.classList.remove(`hide`);
     //             current.innerHTML=returnZero(num+1);
-                
-                
+
+
     //         }else{
     //             item.classList.add(`hide`);
     //             item.classList.remove(`show`);
@@ -743,10 +834,10 @@ const menuItemsComments={
     // }
 
     // showHideElementsByNum(sliderWrappers, numOfSlider);
-    
 
 
-    
+
+
 
     // sliderNext.addEventListener(`click`, ()=>{
     //     if(numOfSlider<totalNums-1){
@@ -757,20 +848,20 @@ const menuItemsComments={
     //         showHideElementsByNum(sliderWrappers, numOfSlider); 
     //     }
 
-        
+
 
     // });
     // sliderPrev.addEventListener(`click`, ()=>{
     //     if(numOfSlider<=0){
     //         numOfSlider=totalNums-1;
     //         showHideElementsByNum(sliderWrappers, numOfSlider);
-            
+
     //     }else{
     //         numOfSlider--;
     //       showHideElementsByNum(sliderWrappers, numOfSlider);  
     //     }
 
-        
+
 
     // });
 
