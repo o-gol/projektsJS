@@ -803,6 +803,125 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
 
 
+ //-------------------------Colculator
+
+let weight=60,
+height=170,
+age=30,
+coefficient=0,
+sexCoef=0;
+// caloriesMale,
+// caloriesFemale;
+
+
+
+
+const sex=document.querySelector(`#gender`),
+calculating=document.querySelector(`.calculating`),
+coloriesSpan=calculating.querySelector(`span`);
+sexItems=sex.querySelectorAll(`.calculating__choose-item`),
+activCont=document.querySelector(`.calculating__choose_big`);
+activContItems=activCont.querySelectorAll(`.calculating__choose-item`);
+const inputsCont=document.querySelector(`.calculating__choose_medium`);
+const inputsContItems=inputsCont.querySelectorAll(`.calculating__choose-item`);
+chooseItemsActive();
+inputs(inputsContItems);
+choose(sex, sexItems);
+choose(activCont,activContItems);
+function chooseItemsActive(){
+    const items= document.querySelectorAll(`.calculating__choose-item.calculating__choose-item_active` );
+    items.forEach((item)=>{
+        switch(item.textContent){
+            case "Мужчина" :
+                sexCoef=5;
+                break;
+            case "Женщина" :
+                sexCoef=(-161);
+                break;
+            case "Низкая активность " :
+                coefficient=1.2;
+                break;
+            case "Невысокая активность" :
+                coefficient=1.375;
+                break;
+            case "Умеренная активность" :
+                coefficient=1.55;
+                break;
+            case "Высокая активность" :
+                coefficient=1.7;
+                break;
+        }
+    });
+
+    
+    // inputsCont.addEventListener
+    coloriesSpan.innerText=calories();
+}
+function inputs(items){
+    
+        items.forEach(item=>{
+            item.addEventListener(`change`,()=>{
+            if(item.id==`height`){
+                height= +item.value;
+                console.log(item.id,height);
+                coloriesSpan.innerText=calories();
+            }else if(item.id==`weight`){
+                weight= +item.value;
+                console.log(item.id,weight);
+                coloriesSpan.innerText=calories();
+            }else if(item.id==`age`){
+                age= +item.value;
+                console.log(item.id,age);
+                coloriesSpan.innerText=calories();
+            }
+            
+        });
+    });
+    coloriesSpan.innerText=calories();
+}
+
+function choose(container,items){
+
+    container.addEventListener(`click`,(e)=>{
+        items.forEach(item=>{
+            if(item==e.target){
+                item.classList.add(`calculating__choose-item_active`);
+            }else{
+                item.classList.remove(`calculating__choose-item_active`)
+            }
+            
+        });
+        chooseItemsActive();
+    });
+
+}
+function calories() {
+
+    return (10*weight+6.25*height-5*age+sexCoef)*coefficient
+    
+} 
+
+
+// sex.addEventListener(`click`,(e)=>{
+//     //console.log(e.target);
+//     if(e.target.classList.contains(`calculating__choose-item`)){
+//         //console.log(e.target);
+//         e.target.classList.add(`calculating__choose-item_active`);
+//     }
+// });
+
+//chooseItemsActive.forEach((item)=>{console.log(item.textContent)});
+
+
+
+
+
+
+ //-------------------------End Colculator
+
+
+
+
 
 
 
