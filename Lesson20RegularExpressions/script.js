@@ -1,18 +1,18 @@
 'use strict';
-// const ans=prompt(`insert name`);
-// const reg=/n/gi
-//console.log(ans.search(reg));
-//console.log(ans.match(reg));
-// const pass=prompt(`Password`);
+const ans1=prompt(`insert name`);
+const reg1=/n/gi
+console.log(ans1.search(reg1));
+console.log(ans1.match(reg1));
+const pass=prompt(`Password`);
 
-// console.log(pass.replace(/./g,"*"));
-// console.log(pass.replace(/\./g,"*")); // спецсимвол экранирования  обратный слэш( \ )
-// console.log(pass.replace(/-/g,":"));
+console.log(pass.replace(/./g,"*"));
+console.log(pass.replace(/\./g,"*")); // спецсимвол экранирования  обратный слэш( \ )
+console.log(pass.replace(/-/g,":"));
 
-// const ans=prompt(`insert name`);
-// const reg=/\d/gi;
-// console.log(reg.test(ans));
-// console.log(ans.match(reg));
+const ans2=prompt(`insert name`);
+const reg2=/\d/gi;
+console.log(reg2.test(ans2));
+console.log(ans2.match(reg2));
 // \d -ищем цифры
 // \w -ищем буквы
 // \s -ищем пробелы
