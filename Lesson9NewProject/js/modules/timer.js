@@ -1,11 +1,22 @@
-function timer(){
+
+function returnZero(num) {
+    if ((num >= 0) && (num < 10)) {
+        return `0${num}`;
+    } else {
+        return num;
+    }
+}
+
+function timer(timerSelector,date){
+
 
     
     
-    const timerDay = document.querySelector(`#days`),
-        timerHours = document.querySelector(`#hours`),
-        timerMin = document.querySelector(`#minutes`),
-        timerSec = document.querySelector(`#seconds`);
+    const timer = document.querySelector(timerSelector),
+        timerDay = timer.querySelector(`#days`),
+        timerHours = timer.querySelector(`#hours`),
+        timerMin = timer.querySelector(`#minutes`),
+        timerSec = timer.querySelector(`#seconds`);
 
 
 
@@ -17,25 +28,14 @@ function timer(){
 
     
 
-    function returnZero(num) {
-        if ((num >= 0) && (num < 10)) {
-            return `0${num}`;
-        } else {
-            return num;
-        }
-    }
+    
 
-    function counterInZero() {
-        timerDay.innerText = `00`;
-        timerHours.innerText = `00`;
-        timerMin.innerText = `00`;
-        timerSec.innerText = `00`;
-    }
 
     function counterMy() {
         let date1 = new Date();
-        //let date2 = new Date("09/25/2020");
-        let date2 = new Date(2020, 9, 2);
+        //let date2 = new Date("29/10/2020");
+        //let date2 = new Date(2020, 10, 29);
+        let date2 = new Date(date);
 
         let timeDiff = Math.abs(date2.getTime() - date1.getTime());
         //let timeDiff1 = (date2.getTime() - date1.getTime());
@@ -59,10 +59,18 @@ function timer(){
 
     }
 
-    
+    function counterInZero() {
+    timerDay.innerText = `00`;
+    timerHours.innerText = `00`;
+    timerMin.innerText = `00`;
+    timerSec.innerText = `00`;
+}
 
 
 
 }
 
+
+
 export default timer;
+export {returnZero};

@@ -1,4 +1,10 @@
-function forms(){
+import {closeModel, showModal} from './modal';
+import{postConnect} from '../services/services';
+import{getConnect} from '../services/services';
+
+function forms(modalSelector,idTimer)
+
+{
 
      //------------------------- Forms
      const allForms = document.querySelectorAll(`form`);
@@ -12,6 +18,7 @@ function forms(){
      //[phone-input]
      //[name-input]
      //console.log(allForms);
+     const modelCaller = document.querySelector(modalSelector);
      allForms.forEach(item => {
          callMeBack(item);
      });
@@ -140,24 +147,7 @@ function forms(){
      //     return await res.json();
      // }
  
-     async function postConnect(url, headers1, body1) {
-         return await fetch(url, {
-                 method: `POST`,
-                 headers: headers1,
-                 body: body1
- 
-             })
-             .then((response) => response.json());
-     }
-     async function getConnect(url) {
- 
-         const res = await fetch(url);
-         if (!res.ok) {
-             throw new Error(`Could not fetch ${url}, status ${res.status} `);
-         }
-         return res.json();
-     }
- 
+     
  
  
  
@@ -220,7 +210,7 @@ function forms(){
      function showThanksModal(messageAnsver) {
          const prevModalDialog = document.querySelector(`.modal__dialog`);
          prevModalDialog.classList.add(`hide`);
-         showModal();
+         showModal(`.modal`,idTimer);
          const thanksModal = document.createElement(`div`);
          thanksModal.classList.add(`modal__dialog`);
          thanksModal.innerHTML = `
@@ -237,7 +227,7 @@ function forms(){
              thanksModal.remove();
              prevModalDialog.classList.add(`show`);
              prevModalDialog.classList.remove(`hide`);
-             closeModel();
+             closeModel(`.modal`);
  
          }, 5000);
  

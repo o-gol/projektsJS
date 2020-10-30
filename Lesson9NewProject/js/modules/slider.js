@@ -1,18 +1,54 @@
-function slider(){
+import {returnZero} from './timer';
 
+function slider(
+    //{
+    sliderS,
+    sliderWrappersS,
+    sliderNextS,
+    sliderPrevS,
+    currentS,
+    totalS,
+    sliderFieldS,
+    sliderWrapperS,
+    carouselIndicatorsS
+    //}
+    )
+    {
+    console.log(sliderS);
      //------------------------- Slider
 
-     const slider = document.querySelector(`.offer__slider`);
+    //  `.offer__slider`,        
+    //  `.offer__slide`,         
+    //  `.offer__slider-next`,   
+    //  `.offer__slider-prev`,   
+    //  `#current`,              
+    //  `#total`,                
+    //  `.offer__slider-inner`,  
+    //  `.offer__slider-wrapper`,
+    //  `ol`                     
+    //  const slider = document.querySelector(`.offer__slider`);
+    //  slider.style.position=`relative`;
+    //  const sliderWrappers = slider.querySelectorAll(`.offer__slide`);
+    //  const sliderNext = slider.querySelector(`.offer__slider-next`);
+    //  const sliderPrev = slider.querySelector(`.offer__slider-prev`);
+    //  const current = slider.querySelector(`#current`);
+    //  const total = slider.querySelector(`#total`);
+    //  const sliderField = slider.querySelector(`.offer__slider-inner`);
+    //  const sliderWrapper = document.querySelector(`.offer__slider-wrapper`);
+    //  const carouselIndicators = document.createElement(`ol`);
+     const slider = document.querySelector(sliderS);
      slider.style.position=`relative`;
-     //console.log(slider);
-     const sliderWrappers = slider.querySelectorAll(`.offer__slide`);
-     const sliderNext = slider.querySelector(`.offer__slider-next`);
-     const sliderPrev = slider.querySelector(`.offer__slider-prev`);
-     const current = slider.querySelector(`#current`);
-     const total = slider.querySelector(`#total`);
-     const sliderField = slider.querySelector(`.offer__slider-inner`);
-     const sliderWrapper = document.querySelector(`.offer__slider-wrapper`);
-     const carouselIndicators = document.createElement(`ol`);
+     const sliderWrappers = slider.querySelectorAll(sliderWrappersS);
+     const sliderNext = slider.querySelector(sliderNextS);
+     const sliderPrev = slider.querySelector(sliderPrevS);
+     const current = slider.querySelector(currentS);
+     const total = slider.querySelector(totalS);
+     const sliderField = slider.querySelector(sliderFieldS);
+     const sliderWrapper = document.querySelector(sliderWrapperS);
+     const carouselIndicators = document.createElement(carouselIndicatorsS);
+
+
+     
      carouselIndicators.classList.add(`carousel-indicators`);
      slider.append(carouselIndicators);
      let totalNums = sliderWrappers.length;

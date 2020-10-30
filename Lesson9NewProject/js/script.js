@@ -1,17 +1,29 @@
+
+
 `use strict`;
+
+
+import timer from './modules/timer';
+import tabs from './modules/tabs';
+import slider from './modules/slider';
+import modal from './modules/modal';
+import forms from './modules/forms';
+import cards from './modules/cards';
+import calculator from './modules/calculator';
+import {showModal} from './modules/modal';
+
+
 // cd projectsJS/Lesson9NewProject 
+// cd Lesson9NewProject 
 // cd C:\MAMP\htdocs\projektsJS\Lesson9NewProject
 // comands: npx json-server db.json  --запуск json сервера
 //http://localhost:3000/menu  --база данных json сервера(get)
 //http://localhost:3000/requests  --requests json сервера(post)
+//npm install webpack webpack-cli --save-dev
 
-import timer from `./modules/timer`;
-import tabs from `./modules/tabs`;
-import slider from `./modules/slider`;
-import modal from `./modules/modal`;
-import forms from `./modules/forms`;
-import cards from `./modules/cards`;
-import calculator from `./modules/calculator`;
+
+
+
 
 
 
@@ -20,11 +32,35 @@ import calculator from `./modules/calculator`;
 
 document.addEventListener(`DOMContentLoaded`, () => {
 
-timer();
-tabs();
-slider();
-modal();
-forms();
+const idTimer = setTimeout(()=>showModal(`.modal`,idTimer), 5000);
+timer(`.timer`,"2020-11-29");
+tabs(`.tabheader__item`,`.tabheader__items`,`.tabcontent`,`tabheader__item_active`);
+
+slider (`.offer__slider`,               
+`.offer__slide`,                     
+`.offer__slider-next`,                             
+`.offer__slider-prev`,                             
+`#current`,                                           
+`#total`,                                       
+`.offer__slider-inner`,                               
+`.offer__slider-wrapper`,                                     
+`ol`                                               
+
+//   {
+// slider : `.offer__slider`,                  
+// sliderWrappers : `.offer__slide`,                            
+// sliderNext : `.offer__slider-next`,                                    
+// sliderPrev : `.offer__slider-prev`,                                       
+// current : `#current`,                                                       
+// total : `#total`,                                             
+// sliderField : `.offer__slider-inner`,                                   
+// sliderWrapper : `.offer__slider-wrapper`,                                     
+// carouselIndicators : `ol`                                               
+//  }
+);
+
+modal(`[data-model]`,`.modal`,idTimer);
+forms(`.modal`,idTimer);
 cards();
 calculator();
 

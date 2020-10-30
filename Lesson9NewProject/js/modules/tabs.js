@@ -1,9 +1,9 @@
-function tubs(){
+function tubs(tabheaderItemsSelector,tabheaderItemSelector,tabcontainersSelector,activity){
 
-    const tabheaderItems = document.querySelectorAll(`.tabheader__item`),
-        tabheaderItem = document.querySelector(`.tabheader__items`),
-        tabcontainers = document.querySelectorAll(`.tabcontent`);
-    const tabcontainer = document.querySelector(`.tabcontainer`);
+    const tabheaderItems = document.querySelectorAll(tabheaderItemsSelector),
+        tabheaderItem = document.querySelector(tabheaderItemSelector),
+        tabcontainers = document.querySelectorAll(tabcontainersSelector);
+    //const tabcontainer = document.querySelector(`.tabcontainer`);
 
 
 
@@ -15,7 +15,7 @@ function tubs(){
 
         });
         tabheaderItems.forEach(item => {
-            item.classList.remove(`tabheader__item_active`);
+            item.classList.remove(activity);
 
         });
 
@@ -24,13 +24,13 @@ function tubs(){
 
     function showTabContent(i = 0) {
         tabcontainers[i].style.display = `block`;
-        tabheaderItems[i].classList.add(`tabheader__item_active`);
+        tabheaderItems[i].classList.add(activity);
         flag = i;
     }
     showTabContent();
 
     tabheaderItem.addEventListener(`click`, e => {
-        if (e.target && e.target.classList[0] == `tabheader__item`) {
+        if (e.target && e.target.classList[0] == tabheaderItemsSelector.substr(1)) {
             tabheaderItems.forEach((item, i) => {
                 if (item == e.target) {
                     hideTabContent();
@@ -45,13 +45,15 @@ function tubs(){
 
      //-----------Event Delegation
      tabheaderItem.addEventListener(`mouseover`, (e) => {
-        if (e.target && e.target.classList.contains(`tabheader__item`) && e.target == tabheaderItems[flag]) {} else if (e.target && e.target.classList.contains(`tabheader__item`)) {
-            e.target.classList.toggle(`tabheader__item_active`);
+        
+
+        if (e.target && e.target.classList.contains(tabheaderItemsSelector.substr(1)) && e.target == tabheaderItems[flag]) {} else if (e.target && e.target.classList.contains(tabheaderItemsSelector.substr(1))) {
+            e.target.classList.toggle(activity);
         }
     });
     tabheaderItem.addEventListener(`mouseout`, (e) => {
-        if (e.target && e.target.classList.contains(`tabheader__item`) && e.target == tabheaderItems[flag]) {} else if (e.target && e.target.classList.contains(`tabheader__item`)) {
-            e.target.classList.toggle(`tabheader__item_active`);
+        if (e.target && e.target.classList.contains(tabheaderItemsSelector.substr(1)) && e.target == tabheaderItems[flag]) {} else if (e.target && e.target.classList.contains(tabheaderItemsSelector.substr(1))) {
+            e.target.classList.toggle(activity);
         }
 
     });
