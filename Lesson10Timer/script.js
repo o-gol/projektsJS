@@ -65,23 +65,47 @@ let top1=0;
 
 // }
 
+
+
+// btn.addEventListener(`click`,()=>{
+//     if(box.style.left!=`300px`||box.style.top!=`300px`){
+//     timerId=setTimeout(function animation(){
+    
+//         box.style.left=`${left+=1}px`;
+//         box.style.top=`${top1+=1}px`;
+//         console.log(left);
+//         console.log(top1);
+//         if(box.style.left==`300px`||box.style.top==`300px`){
+//             clearInterval(timerId);
+//         }else{
+//             timerId=setTimeout(animation,10);
+//         }
+    
+//     },10);
+//     }
+// });
+
 btn.addEventListener(`click`,()=>{
     if(box.style.left!=`300px`||box.style.top!=`300px`){
-    timerId=setTimeout(function animation(){
+    timerId=requestAnimationFrame(function animation(){
     
         box.style.left=`${left+=1}px`;
         box.style.top=`${top1+=1}px`;
         console.log(left);
         console.log(top1);
         if(box.style.left==`300px`||box.style.top==`300px`){
-            clearInterval(timerId);
+            cancelAnimationFrame(timerId);
+            
         }else{
-            timerId=setTimeout(animation,10);
+            timerId=setTimeout(animation);
         }
     
-    },10);
+    });
     }
 });
+
+
+
 
 
 // btn.addEventListener(`click`,()=>{

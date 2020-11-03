@@ -11,6 +11,7 @@ import forms from './modules/forms';
 import cards from './modules/cards';
 import calculator from './modules/calculator';
 import {showModal} from './modules/modal';
+import { tns } from "../node_modules/tiny-slider/src/tiny-slider";
 
 
 // cd projectsJS/Lesson9NewProject 
@@ -58,11 +59,36 @@ slider (`.offer__slider`,
 // carouselIndicators : `ol`                                               
 //  }
 );
+// tns({
+//     container: `.offer__slider`,
+// mode :	"carousel", 
+// axis  :	"horizontal" ,
+// items	: 3,
+// gutter :	10,
+// edgePadding	: 10,
+// center : true,
+// sslideBy : `page`,
+// prevButton:`.offer__slider-prev`	,
 
+// nextButton	: `.offer__slider-next`,
+// autoplay: true,
+
+// // nav	Boolean	Default: true.
+// // Controls the display and functionalities of nav components (dots). If true, display the nav and add all functionalities.
+// // navPosition	"top" | "bottom"	Default: "top".
+// // Controls nav position.
+// // navContainer	Node | String | false	Default: false.
+// // The container element/selector around the dots.
+// // navContainer must have at least same number of children as the slides.
+// // navAsThumbnails	Boolean	Default: false.
+// // Indicate if the dots are thumbnails. If true, they will always be visible even when more than 1 slides displayed in the viewport.
+// //   
+// });
 modal(`[data-model]`,`.modal`,idTimer);
 forms(`.modal`,idTimer);
 cards();
 calculator();
+
 
 function end(){
 
